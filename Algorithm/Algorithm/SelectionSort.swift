@@ -7,20 +7,19 @@
 
 import Foundation
 
-func selectionSort(arr: [Int]) -> [Int] {
-    
-    var _arr = arr
-    
-    for i in 0..<_arr.count {
-        var min_index = i
-        for j in (i+1)..<_arr.count {
-            if _arr[j] < _arr[min_index] {
-                min_index = j
+public func selectionSort<T>(_ array: [T], _ isOrderedBefore: (T, T) -> Bool) -> [T] {
+    guard array.count > 1 else { return array }
+    var a = array
+    for x in 0 ..< a.count - 1 {
+        var lowest = x
+        for y in x + 1 ..< a.count {
+            if isOrderedBefore(a[y], a[lowest]) {
+                lowest = y
             }
         }
-        _arr.swapAt(i, min_index)
+        if x != lowest {
+            a.swapAt(x, lowest)
+        }
     }
-    
-    return _arr
-    
+    return a
 }

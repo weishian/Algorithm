@@ -9,5 +9,6 @@ import Foundation
 
 print("Hello, World!")
 
-print(selectionSort(arr: [-2, -3, 4, 9, 10, 234, 567]))
-
+print(selectionSort([-2, -3, 4, 9, 10, 234, 567]) { (a, b) -> Bool in
+    return a > b
+})
